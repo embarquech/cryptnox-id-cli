@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security model &mdash; Cryptnox ID CLI</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-id-cli/security-model.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
+    <link rel="prev" title="JSON output" href="reference/json-output.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Cryptnox ID CLI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick starts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/piv.html">PIV quick start: a card that works with yubico-piv-tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-rdp.html">PIV quick start: Windows logon &amp; Remote Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-ssh.html">PIV quick start: SSH public-key auth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-ssh-certs.html">PIV quick start: SSH user certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-tls.html">PIV quick start: TLS client authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-macos-login.html">PIV quick start: macOS smart-card login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/mifare-sdm.html">DESFire quick start: a tamper-evident NFC tag (SDM/SUN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/fido2.html">FIDO2 quick start: a passkey on the card</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guides/piv-personalization.html">PIV personalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/piv-profiles.html">PIV pre-personalization profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/mifare-desfire.html">MIFARE DESFire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/fido2.html">FIDO2 / CTAP 2.1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/cli.html">CLI basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/piv.html">piv — identity credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/factory.html">factory — pre-personalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/mifare.html">mifare — DESFire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/fido.html">fido — FIDO2 / CTAP 2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/genuine.html">genuine — Genuineness / attestation applet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/exit-codes.html">Exit codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/json-output.html">JSON output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Security model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#secrets-are-never-printed-or-logged">Secrets are never printed or logged</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-rules">Input rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-keys">Development keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#destructive-operations">Destructive operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#claims-discipline">Claims discipline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#platform-notes">Platform notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cryptnox ID CLI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Security model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/security-model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="security-model">
+<h1>Security model<a class="headerlink" href="#security-model" title="Link to this heading"></a></h1>
+<p>The short version:</p>
+<ul class="simple">
+<li><p><strong>Secrets never go on the command line and never appear in output.</strong> PINs,
+PUKs, keys and key files are taken from masked prompts or environment
+variables; every transcript and log line passes a redaction layer that masks
+registered secrets <em>and</em> the data fields of inherently sensitive commands.</p></li>
+<li><p><strong>Destructive operations are gated</strong> — a typed confirmation token
+interactively, or an explicit long-form flag non-interactively (applet
+finalize, FIDO reset, DESFire format).</p></li>
+<li><p><strong>No compliance claims.</strong> <code class="docutils literal notranslate"><span class="pre">piv</span> <span class="pre">validate</span></code> and friends are consistency
+checks; nothing in this documentation claims FIPS/NIST/NPIVP validation.</p></li>
+<li><p>Development cards use published GlobalPlatform test keys (<code class="docutils literal notranslate"><span class="pre">--default-keys</span></code>);
+provisioned cards take keys from environment variables.</p></li>
+</ul>
+<section id="secrets-are-never-printed-or-logged">
+<h2>Secrets are never printed or logged<a class="headerlink" href="#secrets-are-never-printed-or-logged" title="Link to this heading"></a></h2>
+<p>PINs, PUKs, the PIV admin/management key, SCP03 ENC/MAC/DEK keys, DESFire AES
+keys, FIDO PINs, private keys and session keys are never written to stdout, the
+APDU log, or reports.</p>
+<ul class="simple">
+<li><p><strong>Input</strong> is by masked prompt or environment variable. Command-line key/PIN
+options exist only as discouraged escapes for development use, and are flagged
+as such in <code class="docutils literal notranslate"><span class="pre">--help</span></code>.</p></li>
+<li><p><strong>APDU logging</strong> (<code class="docutils literal notranslate"><span class="pre">--apdu-log</span></code>) passes every command and response through a
+single redaction chokepoint. The data field of <code class="docutils literal notranslate"><span class="pre">VERIFY</span></code>, <code class="docutils literal notranslate"><span class="pre">CHANGE</span> <span class="pre">REFERENCE</span>
+<span class="pre">DATA</span></code>, <code class="docutils literal notranslate"><span class="pre">RESET</span> <span class="pre">RETRY</span> <span class="pre">COUNTER</span></code>, <code class="docutils literal notranslate"><span class="pre">GENERAL</span> <span class="pre">AUTHENTICATE</span></code> and CTAP
+<code class="docutils literal notranslate"><span class="pre">clientPIN</span></code> is masked, as is any registered secret value wherever it
+appears.</p></li>
+<li><p><strong>Reports</strong> (<code class="docutils literal notranslate"><span class="pre">report</span> <span class="pre">…</span></code>) are built from the read-only inspectors and
+contain only non-secret data: states, versions, object presence and public
+identifiers.</p></li>
+</ul>
+</section>
+<section id="input-rules">
+<h2>Input rules<a class="headerlink" href="#input-rules" title="Link to this heading"></a></h2>
+<p>For any secret the CLI needs, the order of preference is:</p>
+<ol class="arabic simple">
+<li><p>a <strong>masked interactive prompt</strong> (nothing echoes, nothing reaches the shell
+history);</p></li>
+<li><p>an <strong>environment variable</strong> — <code class="docutils literal notranslate"><span class="pre">CRYPTNOX_PIV_PIN</span></code> / <code class="docutils literal notranslate"><span class="pre">CRYPTNOX_PIV_NEW_PIN</span></code>
+/ <code class="docutils literal notranslate"><span class="pre">CRYPTNOX_PIV_NEW_PUK</span></code> for PINs and PUKs, <code class="docutils literal notranslate"><span class="pre">PIV_SCP03_ENC</span></code> /
+<code class="docutils literal notranslate"><span class="pre">PIV_SCP03_MAC</span></code> / <code class="docutils literal notranslate"><span class="pre">PIV_SCP03_DEK</span></code> for the admin channel,
+<code class="docutils literal notranslate"><span class="pre">CRYPTNOX_PIV_KEY_PASSWORD</span></code> for an encrypted key file, and the DESFire
+<code class="docutils literal notranslate"><span class="pre">--key-env</span> <span class="pre">NAME</span></code> form;</p></li>
+<li><p>a <strong>command-line value</strong> — supported only as a discouraged development
+escape, never for production secrets.</p></li>
+</ol>
+</section>
+<section id="development-keys">
+<h2>Development keys<a class="headerlink" href="#development-keys" title="Link to this heading"></a></h2>
+<p>Development cards use well-known <strong>default</strong> keys, documented so the tool can
+operate against them out of the box:</p>
+<ul class="simple">
+<li><p><strong>SCP03 / GlobalPlatform ISD</strong>: the default test key <code class="docutils literal notranslate"><span class="pre">40</span> <span class="pre">41</span> <span class="pre">42</span> <span class="pre">…</span> <span class="pre">4F</span></code>
+(<code class="docutils literal notranslate"><span class="pre">--default-keys</span></code>).</p></li>
+<li><p><strong>DESFire</strong> application keys after <code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">create</span></code>: all-zero AES
+(<code class="docutils literal notranslate"><span class="pre">--zero-key</span></code>).</p></li>
+<li><p><strong>PIV PIN / PUK</strong> in the examples: <code class="docutils literal notranslate"><span class="pre">123456</span></code> / <code class="docutils literal notranslate"><span class="pre">12345678</span></code>.</p></li>
+</ul>
+<p>These are <strong>not secrets</strong> for a production card — they are public, published
+values. A real deployment must rotate them, which is exactly what the
+environment-variable key input above is for.</p>
+</section>
+<section id="destructive-operations">
+<h2>Destructive operations<a class="headerlink" href="#destructive-operations" title="Link to this heading"></a></h2>
+<p>Confirmation is required (unless <code class="docutils literal notranslate"><span class="pre">--yes</span></code>) for <code class="docutils literal notranslate"><span class="pre">mifare</span> <span class="pre">app</span> <span class="pre">create</span></code> /
+<code class="docutils literal notranslate"><span class="pre">app</span> <span class="pre">delete</span></code> and <code class="docutils literal notranslate"><span class="pre">mifare</span> <span class="pre">files</span> <span class="pre">create-standard</span></code>; note that <code class="docutils literal notranslate"><span class="pre">mifare</span> <span class="pre">app</span>
+<span class="pre">delete</span></code> permanently destroys the application and every file in it. The three
+irreversible operations carry a stronger gate: run interactively, the CLI
+prompts for a typed confirmation token; run non-interactively, the long-form
+acknowledgment flag is required instead. Either one satisfies the gate —
+passing the flag skips the token prompt:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">factory</span> <span class="pre">piv</span> <span class="pre">preperso</span> <span class="pre">finalize</span></code> — typed <code class="docutils literal notranslate"><span class="pre">FINALIZE-PIV</span></code> token, or
+<code class="docutils literal notranslate"><span class="pre">--i-understand-this-is-irreversible</span></code>. The PIV applet transitions to
+<code class="docutils literal notranslate"><span class="pre">SECURED</span></code>; recovery is a full applet reinstall.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fido</span> <span class="pre">reset</span></code> — typed <code class="docutils literal notranslate"><span class="pre">RESET-FIDO</span></code> token, or
+<code class="docutils literal notranslate"><span class="pre">--i-understand-this-wipes-all-credentials</span></code>. Erases every credential and
+the FIDO PIN.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mifare</span> <span class="pre">format</span></code> — typed <code class="docutils literal notranslate"><span class="pre">FORMAT-PICC</span></code> token, or
+<code class="docutils literal notranslate"><span class="pre">--i-understand-this-erases-all-applications</span></code>. Also requires the AES PICC
+master key, and erases every application on the card.</p></li>
+</ul>
+</section>
+<section id="claims-discipline">
+<h2>Claims discipline<a class="headerlink" href="#claims-discipline" title="Link to this heading"></a></h2>
+<p>The tool <strong>reports what the card returns</strong> and makes <strong>no FIPS / NIST / NPIVP /
+SP 800-73 validation claim</strong>. The on-card PIV APT advertises SP 800-73-4 while
+the build is labelled “2.0.0 FIPS”; both are surfaced verbatim, and neither is
+endorsed. <code class="docutils literal notranslate"><span class="pre">piv</span> <span class="pre">validate</span></code> is a compatibility / consistency check only, not a
+conformance test.</p>
+</section>
+<section id="platform-notes">
+<h2>Platform notes<a class="headerlink" href="#platform-notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>FIDO2 on Windows</strong> — non-elevated processes are denied PC/SC access to the
+CTAP AID (<code class="docutils literal notranslate"><span class="pre">SCARD_E_NO_ACCESS</span></code>); run <code class="docutils literal notranslate"><span class="pre">fido</span> <span class="pre">…</span></code> from an Administrator
+terminal. This is enforced by Windows to reserve FIDO for its WebAuthn
+platform API, not by the card, and it applies on every reader, contact or
+contactless.</p></li>
+<li><p><strong>DESFire</strong> — contactless only, and the reader must pass native DESFire
+commands (the ACR1252 is verified; the HID OMNIKEY 5422CL does not).</p></li>
+<li><p><strong>PIV administration</strong> — the SCP03 admin channel is contact-only.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reference/json-output.html" class="btn btn-neutral float-left" title="JSON output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Cryptnox SA.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

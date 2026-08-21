@@ -1,0 +1,108 @@
+Security model
+==============
+
+The short version:
+
+* **Secrets never go on the command line and never appear in output.** PINs,
+  PUKs, keys and key files are taken from masked prompts or environment
+  variables; every transcript and log line passes a redaction layer that masks
+  registered secrets *and* the data fields of inherently sensitive commands.
+* **Destructive operations are gated** — a typed confirmation token
+  interactively, or an explicit long-form flag non-interactively (applet
+  finalize, FIDO reset, DESFire format).
+* **No compliance claims.** ``piv validate`` and friends are consistency
+  checks; nothing in this documentation claims FIPS/NIST/NPIVP validation.
+* Development cards use published GlobalPlatform test keys (``--default-keys``);
+  provisioned cards take keys from environment variables.
+
+Secrets are never printed or logged
+--------------------------------------
+
+PINs, PUKs, the PIV admin/management key, SCP03 ENC/MAC/DEK keys, DESFire AES
+keys, FIDO PINs, private keys and session keys are never written to stdout, the
+APDU log, or reports.
+
+* **Input** is by masked prompt or environment variable. Command-line key/PIN
+  options exist only as discouraged escapes for development use, and are flagged
+  as such in ``--help``.
+* **APDU logging** (``--apdu-log``) passes every command and response through a
+  single redaction chokepoint. The data field of ``VERIFY``, ``CHANGE REFERENCE
+  DATA``, ``RESET RETRY COUNTER``, ``GENERAL AUTHENTICATE`` and CTAP
+  ``clientPIN`` is masked, as is any registered secret value wherever it
+  appears.
+* **Reports** (``report …``) are built from the read-only inspectors and
+  contain only non-secret data: states, versions, object presence and public
+  identifiers.
+
+Input rules
+-------------
+
+For any secret the CLI needs, the order of preference is:
+
+#. a **masked interactive prompt** (nothing echoes, nothing reaches the shell
+   history);
+#. an **environment variable** — ``CRYPTNOX_PIV_PIN`` / ``CRYPTNOX_PIV_NEW_PIN``
+   / ``CRYPTNOX_PIV_NEW_PUK`` for PINs and PUKs, ``PIV_SCP03_ENC`` /
+   ``PIV_SCP03_MAC`` / ``PIV_SCP03_DEK`` for the admin channel,
+   ``CRYPTNOX_PIV_KEY_PASSWORD`` for an encrypted key file, and the DESFire
+   ``--key-env NAME`` form;
+#. a **command-line value** — supported only as a discouraged development
+   escape, never for production secrets.
+
+Development keys
+------------------
+
+Development cards use well-known **default** keys, documented so the tool can
+operate against them out of the box:
+
+* **SCP03 / GlobalPlatform ISD**: the default test key ``40 41 42 … 4F``
+  (``--default-keys``).
+* **DESFire** application keys after ``app create``: all-zero AES
+  (``--zero-key``).
+* **PIV PIN / PUK** in the examples: ``123456`` / ``12345678``.
+
+These are **not secrets** for a production card — they are public, published
+values. A real deployment must rotate them, which is exactly what the
+environment-variable key input above is for.
+
+Destructive operations
+------------------------
+
+Confirmation is required (unless ``--yes``) for ``mifare app create`` /
+``app delete`` and ``mifare files create-standard``; note that ``mifare app
+delete`` permanently destroys the application and every file in it. The three
+irreversible operations carry a stronger gate: run interactively, the CLI
+prompts for a typed confirmation token; run non-interactively, the long-form
+acknowledgment flag is required instead. Either one satisfies the gate —
+passing the flag skips the token prompt:
+
+* ``factory piv preperso finalize`` — typed ``FINALIZE-PIV`` token, or
+  ``--i-understand-this-is-irreversible``. The PIV applet transitions to
+  ``SECURED``; recovery is a full applet reinstall.
+* ``fido reset`` — typed ``RESET-FIDO`` token, or
+  ``--i-understand-this-wipes-all-credentials``. Erases every credential and
+  the FIDO PIN.
+* ``mifare format`` — typed ``FORMAT-PICC`` token, or
+  ``--i-understand-this-erases-all-applications``. Also requires the AES PICC
+  master key, and erases every application on the card.
+
+Claims discipline
+-------------------
+
+The tool **reports what the card returns** and makes **no FIPS / NIST / NPIVP /
+SP 800-73 validation claim**. The on-card PIV APT advertises SP 800-73-4 while
+the build is labelled "2.0.0 FIPS"; both are surfaced verbatim, and neither is
+endorsed. ``piv validate`` is a compatibility / consistency check only, not a
+conformance test.
+
+Platform notes
+----------------
+
+* **FIDO2 on Windows** — non-elevated processes are denied PC/SC access to the
+  CTAP AID (``SCARD_E_NO_ACCESS``); run ``fido …`` from an Administrator
+  terminal. This is enforced by Windows to reserve FIDO for its WebAuthn
+  platform API, not by the card, and it applies on every reader, contact or
+  contactless.
+* **DESFire** — contactless only, and the reader must pass native DESFire
+  commands (the ACR1252 is verified; the HID OMNIKEY 5422CL does not).
+* **PIV administration** — the SCP03 admin channel is contact-only.

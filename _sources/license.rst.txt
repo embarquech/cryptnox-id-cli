@@ -1,0 +1,24 @@
+License
+=======
+
+Software
+--------
+
+This project's software is available under the terms of the GNU LESSER GENERAL
+PUBLIC LICENSE (LGPL) v3. A commercial license is also available for projects
+that cannot comply with the LGPL — see ``COMMERCIAL.md`` in the repository root.
+
+Documentation
+-------------
+
+This documentation is licensed under the `Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International license
+<https://creativecommons.org/licenses/by-nc-nd/4.0/>`_ (CC BY-NC-ND 4.0). The
+software license above does not extend to the documentation, nor the reverse.
+
+----
+
+Full text of the software license (LGPL v3):
+
+.. literalinclude:: ../LICENSE
+   :language: none

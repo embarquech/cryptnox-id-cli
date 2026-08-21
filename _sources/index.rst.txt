@@ -1,0 +1,61 @@
+|product|
+=========
+
+Command-line management for the Cryptnox multi-applet smart card: PIV
+(SP 800-73 identity credentials), FIDO2/CTAP 2.1 (passkeys), and MIFARE
+DESFire contactless — three independent functions on one physical card,
+driven by one tool: |cli|.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Getting started
+
+   overview
+   installation
+   getting-started
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Quick starts
+
+   quickstart/piv
+   quickstart/piv-rdp
+   quickstart/piv-ssh
+   quickstart/piv-ssh-certs
+   quickstart/piv-tls
+   quickstart/piv-macos-login
+   quickstart/mifare-sdm
+   quickstart/fido2
+
+.. toctree::
+   :maxdepth: 2
+   :caption: User guides
+
+   guides/piv-personalization
+   guides/piv-profiles
+   guides/mifare-desfire
+   guides/fido2
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Reference
+
+   reference/cli
+   reference/piv
+   reference/factory
+   reference/mifare
+   reference/fido
+   reference/genuine
+   reference/exit-codes
+   reference/json-output
+
+.. API Reference — RESERVED: autodoc of the Python package, if/when it is
+   publicly pip-installable (see the internal documentation plan, decision D4).
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Project
+
+   security-model
+   troubleshooting
+   license
