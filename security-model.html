@@ -10,6 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=7a4c8f93" />
 
   
     <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-id-cli/security-model.html" />
@@ -24,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
-    <link rel="prev" title="JSON output" href="reference/json-output.html" /> 
+    <link rel="prev" title="Exit codes" href="exit-codes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,42 +48,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Quick starts</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv.html">PIV quick start: a card that works with yubico-piv-tool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-rdp.html">PIV quick start: Windows logon &amp; Remote Desktop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-ssh.html">PIV quick start: SSH public-key auth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-ssh-certs.html">PIV quick start: SSH user certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-tls.html">PIV quick start: TLS client authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-macos-login.html">PIV quick start: macOS smart-card login</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/mifare-sdm.html">DESFire quick start: a tamper-evident NFC tag (SDM/SUN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/fido2.html">FIDO2 quick start: a passkey on the card</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User guides</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="guides/piv-personalization.html">PIV personalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/piv-profiles.html">PIV pre-personalization profiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/mifare-desfire.html">MIFARE DESFire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/fido2.html">FIDO2 / CTAP 2.1</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="reference/cli.html">CLI basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/piv.html">piv — identity credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/factory.html">factory — pre-personalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/mifare.html">mifare — DESFire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/fido.html">fido — FIDO2 / CTAP 2.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/genuine.html">genuine — Genuineness / attestation applet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/exit-codes.html">Exit codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/json-output.html">JSON output</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Project</span></p>
-<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="interactive-shell.html">Interactive shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli-basics.html">CLI basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-output.html">JSON output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exit-codes.html">Exit codes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Security model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#secrets-are-never-printed-or-logged">Secrets are never printed or logged</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#input-rules">Input rules</a></li>
@@ -93,6 +66,41 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PIV</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="piv/quick-start-a-working-piv-card.html">Quick start: a working PIV card</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/windows-logon-and-remote-desktop.html">Windows logon &amp; Remote Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/ssh-public-key-authentication.html">SSH public-key authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/ssh-user-certificates.html">SSH user certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/tls-client-authentication.html">TLS client authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/macos-smart-card-login.html">macOS smart-card login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/piv-personalization.html">PIV personalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/piv-commands.html">PIV commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FIDO2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fido2/quick-start-a-passkey-on-the-card.html">Quick start: a passkey on the card</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fido2/fido2-guide.html">FIDO2 guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fido2/fido2-commands.html">FIDO2 commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MIFARE DESFire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun.html">Quick start: a tamper-evident NFC tag (SDM/SUN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mifare/mifare-desfire-guide.html">MIFARE DESFire guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mifare/mifare-desfire-commands.html">MIFARE DESFire commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Genuineness</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genuine/genuineness-commands.html">Genuineness commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Factory &amp; provisioning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="factory/pre-personalization-profiles.html">Pre-personalization profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factory/factory-commands.html">Factory commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
@@ -233,7 +241,7 @@ commands (the ACR1252 is verified; the HID OMNIKEY 5422CL does not).</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="reference/json-output.html" class="btn btn-neutral float-left" title="JSON output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exit-codes.html" class="btn btn-neutral float-left" title="Exit codes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -243,9 +251,6 @@ commands (the ACR1252 is verified; the HID OMNIKEY 5422CL does not).</p></li>
     <p>&#169; Copyright 2026, Cryptnox SA.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

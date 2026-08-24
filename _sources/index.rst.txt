@@ -13,41 +13,54 @@ driven by one tool: |cli|.
    overview
    installation
    getting-started
+   interactive-shell
+   cli-basics
+   json-output
+   exit-codes
+   security-model
+   troubleshooting
+
+.. toctree::
+   :maxdepth: 2
+   :caption: PIV
+
+   piv/quick-start-a-working-piv-card
+   piv/windows-logon-and-remote-desktop
+   piv/ssh-public-key-authentication
+   piv/ssh-user-certificates
+   piv/tls-client-authentication
+   piv/macos-smart-card-login
+   piv/piv-personalization
+   piv/piv-commands
+
+.. toctree::
+   :maxdepth: 2
+   :caption: FIDO2
+
+   fido2/quick-start-a-passkey-on-the-card
+   fido2/fido2-guide
+   fido2/fido2-commands
+
+.. toctree::
+   :maxdepth: 2
+   :caption: MIFARE DESFire
+
+   mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun
+   mifare/mifare-desfire-guide
+   mifare/mifare-desfire-commands
 
 .. toctree::
    :maxdepth: 1
-   :caption: Quick starts
+   :caption: Genuineness
 
-   quickstart/piv
-   quickstart/piv-rdp
-   quickstart/piv-ssh
-   quickstart/piv-ssh-certs
-   quickstart/piv-tls
-   quickstart/piv-macos-login
-   quickstart/mifare-sdm
-   quickstart/fido2
+   genuine/genuineness-commands
 
 .. toctree::
    :maxdepth: 2
-   :caption: User guides
+   :caption: Factory & provisioning
 
-   guides/piv-personalization
-   guides/piv-profiles
-   guides/mifare-desfire
-   guides/fido2
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Reference
-
-   reference/cli
-   reference/piv
-   reference/factory
-   reference/mifare
-   reference/fido
-   reference/genuine
-   reference/exit-codes
-   reference/json-output
+   factory/pre-personalization-profiles
+   factory/factory-commands
 
 .. API Reference — RESERVED: autodoc of the Python package, if/when it is
    publicly pip-installable (see the internal documentation plan, decision D4).
@@ -56,6 +69,4 @@ driven by one tool: |cli|.
    :maxdepth: 1
    :caption: Project
 
-   security-model
-   troubleshooting
    license

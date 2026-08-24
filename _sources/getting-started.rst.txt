@@ -5,32 +5,32 @@ First contact with the card:
 
 .. code-block:: console
 
-   $ cryptnox-card readers       # which reader to use (note the --reader hint)
-   $ cryptnox-card info          # all three functions on one screen
-   $ cryptnox-card doctor        # if anything looks off
+   $ cryptnox-id readers       # which reader to use (note the --reader hint)
+   $ cryptnox-id info          # all three functions on one screen
+   $ cryptnox-id doctor        # if anything looks off
 
 ``info`` and ``doctor`` are read-only and safe to run any time. ``doctor`` exits
 with code **2** if a blocking check fails (useful in scripts); FIDO/DESFire
 warnings on a contact or non-elevated setup are **not** blocking.
 
-Then pick your path: :doc:`quickstart/piv`, :doc:`quickstart/mifare-sdm` or
-:doc:`quickstart/fido2`.
+Then pick your path: :doc:`/piv/quick-start-a-working-piv-card`, :doc:`/mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun` or
+:doc:`/fido2/quick-start-a-passkey-on-the-card`.
 
 Choosing a reader
 -------------------
 
 Every command talks to exactly one reader.
 
-* **Default (no ``--reader``)** — the tool picks the single **ACS** reader that
-  has a card. This is deliberate: it avoids touching another project's card in
-  some other reader.
-* If there is **no ACS reader**, or **several** readers with cards, the tool
-  **refuses to guess** and asks you to pass ``--reader``.
-* **``--reader <index>``** — the number from ``cryptnox-card readers`` (e.g.
+* **Default (no ``--reader``)** — the tool picks the single **Cryptnox or ACS**
+  reader that has a card. This is deliberate: it avoids touching another
+  project's card in some other reader.
+* If there is **no Cryptnox/ACS reader**, or **several** readers with cards,
+  the tool **refuses to guess** and asks you to pass ``--reader``.
+* **``--reader <index>``** — the number from ``cryptnox-id readers`` (e.g.
   ``--reader 0``).
 * **``--reader <name>``** — a case-insensitive substring of the reader name
-  (e.g. ``--reader ACR39``, ``--reader PICC``); an ambiguous substring is an
-  error.
+  (e.g. ``--reader CryptnoxCR``, ``--reader ACR39``, ``--reader PICC``); an
+  ambiguous substring is an error.
 
 Two things to know:
 
@@ -38,19 +38,20 @@ Two things to know:
   ``readers`` — ignore them; they are not Cryptnox cards.
 * The **same physical card** over a contact vs a contactless reader exposes
   **different applets**. If PIV looks present but MIFARE does not, you are on a
-  contact reader — and vice versa. Reader names also differ per OS/driver
-  (``PICC`` = contactless, ``ICC`` / ``ACR39U`` = contact on Linux; Cryptnox-
-  branded names on macOS), so prefer selecting by name substring.
+  contact reader — and vice versa. Reader names also differ per unit and
+  OS/driver (``PICC`` = contactless, ``ICC`` / ``ACR39U`` = contact; some
+  Cryptnox units report ``CryptnoxCR`` / ``Cryptnox NFC`` instead), so prefer
+  selecting by name substring.
 
 A bench with both a contact and a contactless reader loaded:
 
 .. code-block:: console
 
-   $ cryptnox-card readers
+   $ cryptnox-id readers
    #  0 | ACS ACR39U ICC Reader 0 (ACS) | present | 3B...     <- contact
    #  1 | Feitian R502 0                | present | 3B...     <- contactless
-   $ cryptnox-card --reader 0 piv info        # PIV over contact
-   $ cryptnox-card --reader 1 mifare info     # DESFire over contactless
+   $ cryptnox-id --reader 0 piv info        # PIV over contact
+   $ cryptnox-id --reader 1 mifare info     # DESFire over contactless
 
 Global options
 ----------------
@@ -86,17 +87,17 @@ These sit before the command and apply to it:
 One card operation at a time
 ------------------------------
 
-Each ``cryptnox-card`` invocation opens the reader, does one thing, and releases
+Each ``cryptnox-id`` invocation opens the reader, does one thing, and releases
 it. Admin and personalization commands each open their **own** SCP03 session
 (this card accepts one application APDU per applet-directed session), so there is
 nothing to "keep open" between commands. For a running prompt that issues many
 commands in a row without re-typing the prefix, use :ref:`the interactive shell
-<cli-shell>` (``cryptnox-card shell``).
+<cli-shell>` (``cryptnox-id shell``).
 
 Next
 ------
 
-* :doc:`quickstart/piv` — provision a PIV credential end to end
-* :doc:`quickstart/fido2` — FIDO2 / CTAP2 walkthrough
-* :doc:`quickstart/mifare-sdm` — DESFire EV3 Secure Dynamic Messaging
-* :doc:`troubleshooting` — when something looks off
+* :doc:`/piv/quick-start-a-working-piv-card` — provision a PIV credential end to end
+* :doc:`/fido2/quick-start-a-passkey-on-the-card` — FIDO2 / CTAP2 walkthrough
+* :doc:`/mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun` — DESFire EV3 Secure Dynamic Messaging
+* :doc:`/troubleshooting` — when something looks off

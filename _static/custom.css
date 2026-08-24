@@ -1,0 +1,11 @@
+/* Width matches cryptnox-cli: that site keeps the sphinx_rtd_theme default
+   content column (800px) — no override here either.
+
+   What it fixes instead: the theme forces `white-space: nowrap` on responsive-
+   table cells, which is what pushes wide tables into a horizontal scrollbar.
+   Let cells wrap normally so tables fold within the column. */
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal;
+}

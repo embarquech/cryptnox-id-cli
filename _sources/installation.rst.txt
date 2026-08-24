@@ -17,7 +17,7 @@ interpreter.
    python -m venv .venv
    .\.venv\Scripts\Activate.ps1
    pip install cryptnox-id-cli
-   cryptnox-card --version
+   cryptnox-id --version
 
 **Linux / macOS (bash):**
 
@@ -26,10 +26,10 @@ interpreter.
    $ python3 -m venv .venv
    $ source .venv/bin/activate
    $ pip install cryptnox-id-cli
-   $ cryptnox-card --version
+   $ cryptnox-id --version
 
-Three console entry points are installed and interchangeable: ``cryptnox-card``,
-``cryptnox-id-card`` and ``cnx-card``.
+Three console entry points are installed and interchangeable: ``cryptnox-id``,
+the short ``cnx-id``, and ``cryptnox-id-card``.
 
 PC/SC per platform
 --------------------
@@ -49,13 +49,13 @@ Confirm the install sees a reader:
 
 .. code-block:: console
 
-   $ cryptnox-card readers
+   $ cryptnox-id readers
 
 Windows single-file executable
 --------------------------------
 
-A standalone ``cryptnox-card.exe`` (no Python install required) is built with
-PyInstaller from ``packaging/cryptnox-card.spec``. PyInstaller cannot
+A standalone ``cryptnox-id.exe`` (no Python install required) is built with
+PyInstaller from ``packaging/cryptnox-id.spec``. PyInstaller cannot
 cross-compile, so each platform's binary is built on that platform; the wheel
 above is the cross-platform path and runs anywhere Python 3.10+ and PC/SC exist.
 
@@ -79,7 +79,7 @@ elevation) all work from Ubuntu in WSL2 against physical cards.
    # WSL (Ubuntu):
    $ sudo apt install pcscd libccid pcsc-tools usbutils
    $ sudo pcscd
-   $ cryptnox-card --reader PICC mifare info    # contactless; --reader ICC/ACR39U for contact
+   $ cryptnox-id --reader PICC mifare info    # contactless; --reader ICC/ACR39U for contact
 
 .. code-block:: powershell
 
@@ -92,5 +92,5 @@ reader is attached to WSL, Windows cannot see it.
 Next
 ------
 
-* :doc:`getting-started` — first commands and reader selection
-* :doc:`overview` — what the card and CLI do
+* :doc:`/getting-started` — first commands and reader selection
+* :doc:`/overview` — what the card and CLI do

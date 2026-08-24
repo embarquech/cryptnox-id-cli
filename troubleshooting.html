@@ -10,6 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=7a4c8f93" />
 
   
     <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-id-cli/troubleshooting.html" />
@@ -23,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="License" href="license.html" />
+    <link rel="next" title="Quick start: a working PIV card" href="piv/quick-start-a-working-piv-card.html" />
     <link rel="prev" title="Security model" href="security-model.html" /> 
 </head>
 
@@ -47,42 +48,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Quick starts</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv.html">PIV quick start: a card that works with yubico-piv-tool</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-rdp.html">PIV quick start: Windows logon &amp; Remote Desktop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-ssh.html">PIV quick start: SSH public-key auth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-ssh-certs.html">PIV quick start: SSH user certificates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-tls.html">PIV quick start: TLS client authentication</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/piv-macos-login.html">PIV quick start: macOS smart-card login</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/mifare-sdm.html">DESFire quick start: a tamper-evident NFC tag (SDM/SUN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart/fido2.html">FIDO2 quick start: a passkey on the card</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">User guides</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="guides/piv-personalization.html">PIV personalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/piv-profiles.html">PIV pre-personalization profiles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/mifare-desfire.html">MIFARE DESFire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/fido2.html">FIDO2 / CTAP 2.1</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="reference/cli.html">CLI basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/piv.html">piv — identity credentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/factory.html">factory — pre-personalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/mifare.html">mifare — DESFire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/fido.html">fido — FIDO2 / CTAP 2.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/genuine.html">genuine — Genuineness / attestation applet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/exit-codes.html">Exit codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/json-output.html">JSON output</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Project</span></p>
-<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="interactive-shell.html">Interactive shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli-basics.html">CLI basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="json-output.html">JSON output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exit-codes.html">Exit codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-model.html">Security model</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#reader-and-transport">Reader and transport</a></li>
@@ -93,6 +66,41 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-a-shareable-diagnostic">Getting a shareable diagnostic</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PIV</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="piv/quick-start-a-working-piv-card.html">Quick start: a working PIV card</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/windows-logon-and-remote-desktop.html">Windows logon &amp; Remote Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/ssh-public-key-authentication.html">SSH public-key authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/ssh-user-certificates.html">SSH user certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/tls-client-authentication.html">TLS client authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/macos-smart-card-login.html">macOS smart-card login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/piv-personalization.html">PIV personalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piv/piv-commands.html">PIV commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FIDO2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fido2/quick-start-a-passkey-on-the-card.html">Quick start: a passkey on the card</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fido2/fido2-guide.html">FIDO2 guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fido2/fido2-commands.html">FIDO2 commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MIFARE DESFire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun.html">Quick start: a tamper-evident NFC tag (SDM/SUN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mifare/mifare-desfire-guide.html">MIFARE DESFire guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mifare/mifare-desfire-commands.html">MIFARE DESFire commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Genuineness</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genuine/genuineness-commands.html">Genuineness commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Factory &amp; provisioning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="factory/pre-personalization-profiles.html">Pre-personalization profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factory/factory-commands.html">Factory commands</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
@@ -123,7 +131,7 @@
   <section id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
 <p>First stop, always:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cryptnox-card<span class="w"> </span>doctor
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cryptnox-id<span class="w"> </span>doctor
 </pre></div>
 </div>
 <p>It checks the PC/SC service, readers, transport, and each card function, and
@@ -143,7 +151,7 @@ Windows: ensure the <em>Smart Card</em> service (<code class="docutils literal n
 <code class="docutils literal notranslate"><span class="pre">pcscd</span></code> and install <code class="docutils literal notranslate"><span class="pre">libccid</span></code>. macOS: PC/SC is built in.</p>
 <p><strong>Multiple readers, wrong one picked.</strong>
 The CLI prefers ACS readers. Pass <code class="docutils literal notranslate"><span class="pre">--reader</span> <span class="pre">&lt;index&gt;</span></code> or a name substring
-(<code class="docutils literal notranslate"><span class="pre">--reader</span> <span class="pre">&quot;ACR1252</span> <span class="pre">1S</span> <span class="pre">CL</span> <span class="pre">Reader</span> <span class="pre">PICC&quot;</span></code>). <code class="docutils literal notranslate"><span class="pre">cryptnox-card</span> <span class="pre">readers</span></code> shows the
+(<code class="docutils literal notranslate"><span class="pre">--reader</span> <span class="pre">&quot;ACR1252</span> <span class="pre">1S</span> <span class="pre">CL</span> <span class="pre">Reader</span> <span class="pre">PICC&quot;</span></code>). <code class="docutils literal notranslate"><span class="pre">cryptnox-id</span> <span class="pre">readers</span></code> shows the
 indices.</p>
 <p><strong>Reader compatibility (DESFire).</strong>
 DESFire native commands are passed through correctly by the <strong>ACS ACR1252</strong>
@@ -185,7 +193,7 @@ not hit this in normal use — only when scripting raw <code class="docutils lit
 The slot’s key has the wrong role. Signing needs a <strong>SIGN-role</strong> slot such as
 <strong>9C</strong> (or a 9A provisioned with the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> / <code class="docutils literal notranslate"><span class="pre">ms-logon</span></code> profile); a
 default-profile 9A is AUTHENTICATE-only and refuses <code class="docutils literal notranslate"><span class="pre">GENERAL</span> <span class="pre">AUTHENTICATE</span></code>
-signing. See <a class="reference internal" href="guides/piv-profiles.html"><span class="doc">PIV pre-personalization profiles</span></a>.</p>
+signing. See <a class="reference internal" href="factory/pre-personalization-profiles.html"><span class="doc">Pre-personalization profiles</span></a>.</p>
 <p><strong>``0xAE AUTHENTICATION_ERROR`` on ``mifare app delete``.</strong>
 Deleting an application requires authentication. Pass <code class="docutils literal notranslate"><span class="pre">--zero-key</span></code> (factory
 default) or <code class="docutils literal notranslate"><span class="pre">--key-env</span> <span class="pre">NAME</span></code>; the CLI then authenticates and sends a MACed
@@ -227,11 +235,11 @@ It defaults to Yubico’s own reader-name matching. Pass your reader explicitly
 with <code class="docutils literal notranslate"><span class="pre">-r</span> <span class="pre">&lt;substring&gt;</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">yubico-piv-tool</span></code> gates its connect on the
 applet answering a Yubico firmware-version query — OpenSC and the Windows
 minidriver use standard PIV discovery instead and are unaffected. See the interop
-matrix in <a class="reference internal" href="quickstart/piv.html"><span class="doc">PIV quick start: a card that works with yubico-piv-tool</span></a>.</p>
+matrix in <a class="reference internal" href="piv/quick-start-a-working-piv-card.html"><span class="doc">Quick start: a working PIV card</span></a>.</p>
 </section>
 <section id="getting-a-shareable-diagnostic">
 <h2>Getting a shareable diagnostic<a class="headerlink" href="#getting-a-shareable-diagnostic" title="Link to this heading"></a></h2>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cryptnox-card<span class="w"> </span>report<span class="w"> </span>full<span class="w"> </span>--out<span class="w"> </span>report.json
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cryptnox-id<span class="w"> </span>report<span class="w"> </span>full<span class="w"> </span>--out<span class="w"> </span>report.json
 </pre></div>
 </div>
 <p>Writes a secret-safe JSON snapshot of all three functions to attach to a bug
@@ -244,7 +252,7 @@ report. It never contains PINs or keys.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="security-model.html" class="btn btn-neutral float-left" title="Security model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="piv/quick-start-a-working-piv-card.html" class="btn btn-neutral float-right" title="Quick start: a working PIV card" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -253,9 +261,6 @@ report. It never contains PINs or keys.</p>
     <p>&#169; Copyright 2026, Cryptnox SA.</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
    
 
 </footer>

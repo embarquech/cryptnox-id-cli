@@ -1,0 +1,54 @@
+Genuineness commands
+====================
+
+The Cryptnox **genuineness / attestation applet** (RID ``A0000010``, AID
+``A000001000024701``) carries an on-card EC device key and a certificate that
+chains to the Cryptnox PKI. It is **contact-only** — it does not answer over a
+contactless reader (SELECT returns 6A82 there), so run these commands on a
+**contact** reader. All ``genuine`` commands are **read-only**.
+
+There is more than one way to test a card's genuineness. This tool performs the
+two checks that need **no secret key material**:
+
+* **proof of possession** — the card signs a fresh host nonce (``ATTEST``); the
+  signature is verified against the on-card leaf certificate's public key. This
+  proves the card physically holds the device private key *now* — a copied
+  certificate cannot fake it.
+* **certificate chain** — ``leaf → Genuineness CA → … → pinned Cryptnox root``,
+  anchored on the pinned trust store (or ``--anchors DIR``).
+
+It deliberately does **not** attempt the ISD or PIV-SSD key checks: those verify
+per-card, HSM/KDF-derived secret keys that this tool has no access to. Their
+absence is stated in the output, never hidden.
+
+Inspection
+----------
+
+.. code-block:: text
+
+   genuine info      SELECT + GET INFO + GET CERT; reports present / personalized,
+                     device leaf subject, issuer, serial (no verification)
+
+Verification
+------------
+
+.. code-block:: text
+
+   genuine verify    live ATTEST (proof of possession) + certificate chain to a
+                     pinned Cryptnox root; verdict GENUINE only when BOTH pass
+
+   Options:
+     --nonce HEX     challenge to sign (default: 32 random bytes)
+     --anchors DIR   directory of extra pinned CA PEMs (e.g. a dev genuineness
+                     CA) to anchor the chain
+
+The Cryptnox production root ships bundled, together with the genuineness CA that
+sits under it, so production cards anchor without extra setup. Where no pinned root
+covers the chain, the chain step reports "cannot verify" and the verdict is **NOT
+proven** even though proof of possession passes — the tool never silently treats an
+unanchored chain as genuine. Add anchors with ``--anchors`` or
+``$CRYPTNOX_TRUST_DIR``; both extend the bundled set rather than replacing it.
+
+A **dev** card chains to a throwaway dev root and can never pass as genuine
+Cryptnox hardware; ``genuine verify --anchors <dev-ca-dir>`` verifies it against the
+dev PKI for testing.
