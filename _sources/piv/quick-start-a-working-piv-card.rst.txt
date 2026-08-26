@@ -15,8 +15,9 @@ Prerequisites
 * The card's SCP03 administration keys. **Development/evaluation cards** use the
   GlobalPlatform test keys — pass ``--default-keys``. **Provisioned cards** take
   their keys from the ``PIV_SCP03_ENC`` / ``PIV_SCP03_MAC`` / ``PIV_SCP03_DEK``
-  environment variables (hex). Keys never go on the command line; see
-  :doc:`/security-model`.
+  environment variables (hex). Keys never go on the command line, and the
+  default keys are for development cards only — see the warning in
+  :doc:`/getting-started`.
 
 Check what you have:
 
@@ -250,4 +251,3 @@ Next steps
 * :doc:`/piv/piv-personalization` — the full lifecycle, key import, finalize
 * :doc:`/factory/pre-personalization-profiles` — customizing the pre-personalization profile
 * :doc:`/piv/piv-commands` — every ``piv`` command
-* :doc:`/security-model` — how secrets are handled

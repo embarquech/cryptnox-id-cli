@@ -137,4 +137,3 @@ Next steps
 ------------
 
 * :doc:`/fido2/quick-start-a-passkey-on-the-card` — the condensed walkthrough this guide expands on
-* :doc:`/security-model` — PIN handling and secret exposure

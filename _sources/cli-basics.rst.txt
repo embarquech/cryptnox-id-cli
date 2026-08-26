@@ -1,5 +1,5 @@
-CLI basics
-==========
+Command syntax & conventions
+============================
 
 |cli| (aliases: ``cnx-id``, ``cryptnox-id-card``) manages the three
 independent functions of the Cryptnox multi-applet smart card. Every command

@@ -130,4 +130,3 @@ Next steps
 
 * :doc:`/piv/ssh-public-key-authentication` — the raw-public-key path this builds on, including
   the 9A fix
-* :doc:`/security-model` — PIN handling and secret exposure

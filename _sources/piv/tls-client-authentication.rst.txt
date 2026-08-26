@@ -232,4 +232,3 @@ Next steps
 * :doc:`/piv/quick-start-a-working-piv-card` — provision the key and certificate this guide builds on
 * :doc:`/piv/ssh-public-key-authentication` — the same PKCS#11 path, for SSH instead of TLS
 * :doc:`/factory/pre-personalization-profiles` — the ``ssh``/``ms-logon`` profiles' 9A ``SIGN`` role
-* :doc:`/security-model` — PIN handling and secret exposure

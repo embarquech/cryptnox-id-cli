@@ -240,4 +240,3 @@ Next steps
 
 * :doc:`/piv/quick-start-a-working-piv-card` — provision the key and certificate this guide builds on
 * :doc:`/factory/pre-personalization-profiles` — profile YAML grammar (role, access mode, mechanisms)
-* :doc:`/security-model` — PIN handling and secret exposure

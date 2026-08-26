@@ -11,7 +11,8 @@ The contract
   into one parser (no ``2>&1``).
 * Errors produce a JSON **error object** and a non-zero exit code (see
   :doc:`/exit-codes`).
-* Secrets never appear in any output stream; see :doc:`/security-model`.
+* Secrets never appear in any output stream — every transcript and log line
+  passes a redaction layer that masks PINs, keys and other registered secrets.
 
 ``--json`` is a **global** option: it goes before the command
 (``cryptnox-id --json fido info``), not after it.

@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FIDO2 commands &mdash; Cryptnox ID CLI</title>
+  <title>Factory &amp; provisioning &mdash; Cryptnox ID CLI</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=7a4c8f93" />
 
   
-    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-id-cli/fido2/fido2-commands.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-id-cli/factory/index.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=01f34227"></script>
@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quick start: a tamper-evident NFC tag (SDM/SUN)" href="../mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun.html" />
-    <link rel="prev" title="FIDO2 guide" href="fido2-guide.html" /> 
+    <link rel="next" title="Pre-personalization profiles" href="pre-personalization-profiles.html" />
+    <link rel="prev" title="Troubleshooting" href="../troubleshooting.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -48,7 +48,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">General</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
@@ -57,7 +57,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../json-output.html">JSON output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exit-codes.html">Exit codes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../factory/index.html">Factory &amp; provisioning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Factory &amp; provisioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pre-personalization-profiles.html">Pre-personalization profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factory-commands.html">Factory commands</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PIV</span></p>
@@ -72,17 +76,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../piv/piv-commands.html">Commands</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">FIDO2</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="quick-start-a-passkey-on-the-card.html">Quick start</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fido2-guide.html">Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Commands</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#inspection">Inspection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pin">PIN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#credentials">Credentials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#destructive">Destructive</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fido2/quick-start-a-passkey-on-the-card.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fido2/fido2-guide.html">Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fido2/fido2-commands.html">Commands</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">MIFARE DESFire</span></p>
 <ul>
@@ -111,9 +108,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">FIDO2 commands</li>
+      <li class="breadcrumb-item active">Factory &amp; provisioning</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/fido2/fido2-commands.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/factory/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -121,64 +118,26 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="fido2-commands">
-<h1>FIDO2 commands<a class="headerlink" href="#fido2-commands" title="Link to this heading"></a></h1>
-<p>FIDO2 authenticator management over NFC (PC/SC). <strong>Windows requires an
-Administrator terminal</strong> — the OS reserves the FIDO applet identifier from
-non-elevated processes; the CLI detects this and says so. PINs come from
-<code class="docutils literal notranslate"><span class="pre">--pin-env</span></code> variables or masked prompts.</p>
-<section id="inspection">
-<h2>Inspection<a class="headerlink" href="#inspection" title="Link to this heading"></a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fido ping          SELECT + version string
-fido info          authenticatorGetInfo, summarized
-fido get-info      authenticatorGetInfo, raw decoded map
-</pre></div>
+  <section id="factory-provisioning">
+<h1>Factory &amp; provisioning<a class="headerlink" href="#factory-provisioning" title="Link to this heading"></a></h1>
+<p>Manufacturing-stage material: pre-personalization lays down the PIV applet’s
+<em>structure</em> — data containers, PIN/PUK verifiers, key objects — from a profile,
+over the SCP03 admin channel. Operators normally never need this; it matters
+for development/evaluation cards and for defining a deployment’s card profile.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pre-personalization-profiles.html">Pre-personalization profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factory-commands.html">Factory commands</a></li>
+</ul>
 </div>
-</section>
-<section id="pin">
-<h2>PIN<a class="headerlink" href="#pin" title="Link to this heading"></a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fido pin status    PIN set? retries left? (non-destructive)
-fido pin set       set the initial PIN
-fido pin change    change the PIN
-</pre></div>
-</div>
-</section>
-<section id="credentials">
-<h2>Credentials<a class="headerlink" href="#credentials" title="Link to this heading"></a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fido credential create      makeCredential (WebAuthn registration)
-fido credential assert      getAssertion (WebAuthn authentication)
-fido credential self-test   register -&gt; assert -&gt; verify the signature
-fido credential list        resident (discoverable) credentials
-fido credential delete      delete a resident credential
-</pre></div>
-</div>
-<p>User presence over NFC is satisfied by card presence on the reader. A usable
-credential requires user verification — set a PIN first.</p>
-</section>
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fido config show              authenticator options and policy
-fido config toggle-always-uv  flip the alwaysUv policy (reversible)
-fido config min-pin-length    raise the minimum PIN length (one-way)
-</pre></div>
-</div>
-</section>
-<section id="destructive">
-<h2>Destructive<a class="headerlink" href="#destructive" title="Link to this heading"></a></h2>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>fido reset    authenticatorReset: wipes ALL credentials and the PIN
-              (gated by --i-understand-this-wipes-all-credentials)
-</pre></div>
-</div>
-<p>Not exposed by this card: bio enrollment, large blobs, enterprise attestation.</p>
-</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="fido2-guide.html" class="btn btn-neutral float-left" title="FIDO2 guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun.html" class="btn btn-neutral float-right" title="Quick start: a tamper-evident NFC tag (SDM/SUN)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../troubleshooting.html" class="btn btn-neutral float-left" title="Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pre-personalization-profiles.html" class="btn btn-neutral float-right" title="Pre-personalization profiles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

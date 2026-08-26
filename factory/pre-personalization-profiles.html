@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Factory commands" href="factory-commands.html" />
-    <link rel="prev" title="Genuineness commands" href="../genuine/genuineness-commands.html" /> 
+    <link rel="prev" title="Factory &amp; provisioning" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,60 +47,58 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
-<ul>
+              <p class="caption" role="heading"><span class="caption-text">General</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interactive-shell.html">Interactive shell</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cli-basics.html">CLI basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cli-basics.html">Command syntax &amp; conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../json-output.html">JSON output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../exit-codes.html">Exit codes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../security-model.html">Security model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Factory &amp; provisioning</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pre-personalization profiles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#built-in-profiles">Built-in profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inspecting-profiles">Inspecting profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#profile-yaml">Profile YAML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#applying-a-profile">Applying a profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="factory-commands.html">Factory commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PIV</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../piv/quick-start-a-working-piv-card.html">Quick start: a working PIV card</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../piv/quick-start-a-working-piv-card.html">Quick start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../piv/windows-logon-and-remote-desktop.html">Windows logon &amp; Remote Desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../piv/ssh-public-key-authentication.html">SSH public-key authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../piv/ssh-user-certificates.html">SSH user certificates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../piv/tls-client-authentication.html">TLS client authentication</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../piv/macos-smart-card-login.html">macOS smart-card login</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../piv/piv-personalization.html">PIV personalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../piv/piv-commands.html">PIV commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../piv/piv-commands.html">Commands</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">FIDO2</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../fido2/quick-start-a-passkey-on-the-card.html">Quick start: a passkey on the card</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../fido2/fido2-guide.html">FIDO2 guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../fido2/fido2-commands.html">FIDO2 commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fido2/quick-start-a-passkey-on-the-card.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fido2/fido2-guide.html">Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fido2/fido2-commands.html">Commands</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">MIFARE DESFire</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun.html">Quick start: a tamper-evident NFC tag (SDM/SUN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mifare/mifare-desfire-guide.html">MIFARE DESFire guide</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mifare/mifare-desfire-commands.html">MIFARE DESFire commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mifare/quick-start-a-tamper-evident-nfc-tag-sdm-sun.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mifare/mifare-desfire-guide.html">Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mifare/mifare-desfire-commands.html">Commands</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Genuineness</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../genuine/genuineness-commands.html">Genuineness commands</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Factory &amp; provisioning</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Pre-personalization profiles</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#built-in-profiles">Built-in profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inspecting-profiles">Inspecting profiles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#profile-yaml">Profile YAML</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#applying-a-profile">Applying a profile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="factory-commands.html">Factory commands</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Project</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genuine/quick-start-prove-a-card-is-genuine.html">Quick start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genuine/genuineness-guide.html">Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genuine/genuineness-commands.html">Commands</a></li>
 </ul>
 
         </div>
@@ -117,6 +115,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Factory &amp; provisioning</a></li>
       <li class="breadcrumb-item active">Pre-personalization profiles</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/factory/pre-personalization-profiles.rst.txt" rel="nofollow"> View page source</a>
@@ -300,14 +299,14 @@ session) — the CLI handles session setup/teardown per command for you.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../genuine/genuineness-commands.html" class="btn btn-neutral float-left" title="Genuineness commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Factory &amp; provisioning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="factory-commands.html" class="btn btn-neutral float-right" title="Factory commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2026, Cryptnox SA.</p>
+    <p>&#169; Copyright 2026, Cryptnox.</p>
   </div>
 
    

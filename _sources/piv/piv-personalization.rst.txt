@@ -220,4 +220,3 @@ Next steps
 * :doc:`/piv/quick-start-a-working-piv-card` — the condensed, one-command path with a
   ``yubico-piv-tool`` interoperability matrix
 * :doc:`/piv/piv-commands` — every ``piv`` command
-* :doc:`/security-model` — how secrets are handled

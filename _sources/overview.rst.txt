@@ -14,7 +14,7 @@ The Cryptnox ID card carries three independent functions on one chip:
 
 A fourth applet, **genuineness**, is Cryptnox's factory attestation: it proves
 the card is authentic. Unlike the three functions above it is *inspected*, never
-provisioned — see :doc:`/genuine/genuineness-commands`.
+provisioned — see :doc:`/genuine/genuineness-guide`.
 
 Reachability at a glance
 --------------------------
@@ -37,7 +37,7 @@ Reachability at a glance
      - Requires a DESFire-capable reader (ACS ACR1252 verified).
    * - Genuineness
      - contact
-     - Cryptnox attestation applet; read-only (:doc:`/genuine/genuineness-commands`).
+     - Cryptnox attestation applet; read-only (:doc:`/genuine/genuineness-guide`).
 
 The **same physical card** exposes **different applets** depending on the
 interface it is reached over. If PIV looks present but MIFARE does not, you are

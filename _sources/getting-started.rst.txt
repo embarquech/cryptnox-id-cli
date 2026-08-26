@@ -94,6 +94,27 @@ nothing to "keep open" between commands. For a running prompt that issues many
 commands in a row without re-typing the prefix, use :ref:`the interactive shell
 <cli-shell>` (``cryptnox-id shell``).
 
+Development keys
+------------------
+
+.. warning::
+
+   Development and evaluation cards use well-known **default** keys, and the
+   examples in this documentation use them too:
+
+   * **SCP03 / GlobalPlatform ISD** — the published GlobalPlatform test key
+     ``40 41 42 … 4F`` (``--default-keys``);
+   * **DESFire** application keys after ``app create`` — all-zero AES
+     (``--zero-key``);
+   * **PIV PIN / PUK** in the examples — ``123456`` / ``12345678``.
+
+   These are **not secrets** — they are public, published values. A production
+   deployment must rotate all of them, which is exactly what the
+   environment-variable key input is for: ``PIV_SCP03_ENC`` /
+   ``PIV_SCP03_MAC`` / ``PIV_SCP03_DEK`` for the admin channel,
+   ``CRYPTNOX_PIV_PIN`` / ``CRYPTNOX_PIV_NEW_PIN`` / ``CRYPTNOX_PIV_NEW_PUK``
+   for PINs and PUKs, and the DESFire ``--key-env NAME`` form.
+
 Next
 ------
 
