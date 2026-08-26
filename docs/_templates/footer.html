@@ -1,0 +1,12 @@
+{% extends "!footer.html" %}
+{#- Footer "Privacy Policy | Cookie Policy" links, shown under the copyright
+    line on every page. cryptnox.com has no dedicated privacy/cookie pages
+    today, so both point at its Legal Notices page — swap the URLs here when
+    dedicated pages exist. -#}
+{% block extrafooter %}
+<p>
+  <a href="https://cryptnox.com/legal-notices/" target="_blank" rel="noopener">Privacy Policy</a>
+  &nbsp;|&nbsp;
+  <a href="https://cryptnox.com/legal-notices/" target="_blank" rel="noopener">Cookie Policy</a>
+</p>
+{% endblock %}
