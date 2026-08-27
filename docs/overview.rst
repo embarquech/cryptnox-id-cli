@@ -61,6 +61,9 @@ do.
    * - |reader-contact| (contact)
      - PIV, FIDO2, genuineness
      - Cryptnox — recommended
+   * - |reader-mini| (contact)
+     - PIV, FIDO2, genuineness
+     - Cryptnox — recommended
    * - |reader-contactless| (NFC)
      - DESFire, PIV/FIDO2 over NFC
      - Cryptnox — recommended
