@@ -10,7 +10,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/cryptnox-id-cli.svg)](https://pypi.org/project/cryptnox-id-cli/)
 [![Python versions](https://img.shields.io/pypi/pyversions/cryptnox-id-cli.svg)](https://pypi.org/project/cryptnox-id-cli/)
-[![docs](https://github.com/embarquech/cryptnox-id-cli/actions/workflows/docs.yml/badge.svg)](https://github.com/embarquech/cryptnox-id-cli/actions/workflows/docs.yml)
+[![docs](https://github.com/cryptnox/cryptnox-id-cli/actions/workflows/docs.yml/badge.svg)](https://github.com/cryptnox/cryptnox-id-cli/actions/workflows/docs.yml)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
 `cryptnox-id-cli` is a command-line interface for managing the **Cryptnox ID**
@@ -75,7 +75,7 @@ Three interchangeable console commands are installed: `cryptnox-id`, the short
 ### From source
 
 ```bash
-git clone https://github.com/embarquech/cryptnox-id-cli.git
+git clone https://github.com/cryptnox/cryptnox-id-cli.git
 cd cryptnox-id-cli
 pip install .
 ```

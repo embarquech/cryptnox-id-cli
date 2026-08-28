@@ -6,7 +6,8 @@
 
 # -- Product identity: the ONLY lines to touch when the public name is decided --
 product_name = "Cryptnox ID CLI"
-repo_slug = "cryptnox-id-cli"
+repo_url = "https://github.com/cryptnox/cryptnox-id-cli"
+repo_slug = repo_url.rsplit("/", 1)[-1]  # docs publish at docs.cryptnox.com/<repo_slug>/
 cli_name = "cryptnox-id"  # primary binary; cnx-id + cryptnox-id-card are aliases
 
 # -- Hardware / shop links: single source of truth, edit here, used doc-wide via
