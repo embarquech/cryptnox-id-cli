@@ -21,6 +21,16 @@ copyright = "2026, Cryptnox"  # noqa: A001 — footer format matches docs.cryptn
 release = "0.1.0"  # keep in sync with the CLI release (see internal release checklist)
 version = release
 
+# -- Versioned docs, same scheme as docs.cryptnox.com/cryptnox-hardware-wallet:
+#    each minor version is published under /<repo_slug>/vMAJ.MIN/ and the site
+#    root redirects to the newest (assembled in .github/workflows/docs.yml).
+#    The sidebar dropdown (_templates/layout.html) is rendered from this list —
+#    append the new slug when publishing a new minor version, oldest first.
+docs_version = "v" + ".".join(release.split(".")[:2])  # e.g. "v0.1"
+docs_versions = ["v0.1"]
+if docs_version not in docs_versions:  # the version being built is always listed
+    docs_versions.append(docs_version)
+
 extensions = [
     "sphinx_copybutton",
     "sphinx.ext.todo",  # draft markers on stub pages; never rendered (see below)
@@ -29,11 +39,22 @@ templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "sphinx_rtd_theme"
+html_theme_options = {
+    # Same sidebar header as docs.cryptnox.com/cryptnox-cli (dark navy behind
+    # the title + logo; title/logo colors come from custom.css)
+    "style_nav_header_background": "#101f2e",
+}
+html_logo = "_static/cryptnox-logo.svg"
+html_favicon = "_static/favicon.png"  # same icon as the cryptnox-hardware-wallet docs
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_js_files = ["custom.js"]
 html_title = product_name
-html_baseurl = f"https://docs.cryptnox.com/{repo_slug}/"
+html_baseurl = f"https://docs.cryptnox.com/{repo_slug}/{docs_version}/"
+html_context = {"docs_version": docs_version, "docs_versions": docs_versions}
 html_show_sphinx = False  # drop the "Built with Sphinx" footer line, matching docs.cryptnox.com/cryptnox-cli
+html_show_sourcelink = False  # no "View page source" link
+html_copy_source = False  # and no _sources/*.rst.txt on the published site
 
 # PDF output name for a local `make latexpdf` run. CI builds HTML only - pdflatex
 # cannot render several characters these docs legitimately use.
