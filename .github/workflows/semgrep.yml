@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     
     # Skip scheduled runs on forks
-    if: (github.event_name != 'schedule') || (github.repository == 'embarquech/cryptnox-id-cli')
+    if: (github.event_name != 'schedule') || (github.repository == 'cryptnox/cryptnox-id-cli')
     
     container:
       # Official Semgrep Docker image

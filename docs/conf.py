@@ -6,14 +6,20 @@
 
 # -- Product identity: the ONLY lines to touch when the public name is decided --
 product_name = "Cryptnox ID CLI"
-repo_slug = "cryptnox-id-cli"
+repo_url = "https://github.com/cryptnox/cryptnox-id-cli"
+repo_slug = repo_url.rsplit("/", 1)[-1]  # docs publish at docs.cryptnox.com/<repo_slug>/
 cli_name = "cryptnox-id"  # primary binary; cnx-id + cryptnox-id-card are aliases
 
 # -- Hardware / shop links: single source of truth, edit here, used doc-wide via
-#    the |reader-*| / |readers-link| substitutions (see rst_prolog below) --
+#    the |reader-*| / |readers-link| substitutions (see rst_prolog below).
+#    Names and shop links match the cryptnox-cli README. --
 readers_url = "https://cryptnox.com/cardreaders/"
 reader_contact_name = "Cryptnox Smartcard Reader"
-reader_contactless_name = "Cryptnox Contactless Reader"
+reader_contact_url = "https://shop.cryptnox.com/product/cryptnox-smartcard-reader/"
+reader_mini_name = "Compact USB Mini Smartcard Reader"
+reader_mini_url = "https://shop.cryptnox.com/product/mini-smartcard-reader/"
+reader_contactless_name = "Cryptnox NFC Contactless Reader"
+reader_contactless_url = "https://shop.cryptnox.com/product/cryptnox-contactless-reader/"
 
 project = product_name
 author = "Cryptnox"
@@ -66,6 +72,7 @@ rst_prolog = f"""
 .. |product| replace:: {product_name}
 .. |cli| replace:: ``{cli_name}``
 .. |readers-link| replace:: `Cryptnox card readers <{readers_url}>`__
-.. |reader-contact| replace:: `{reader_contact_name} <{readers_url}>`__
-.. |reader-contactless| replace:: `{reader_contactless_name} <{readers_url}>`__
+.. |reader-contact| replace:: `{reader_contact_name} <{reader_contact_url}>`__
+.. |reader-mini| replace:: `{reader_mini_name} <{reader_mini_url}>`__
+.. |reader-contactless| replace:: `{reader_contactless_name} <{reader_contactless_url}>`__
 """

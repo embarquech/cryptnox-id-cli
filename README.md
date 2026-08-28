@@ -1,58 +1,142 @@
-# Cryptnox ID CLI
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6ce54a27-8fb6-48e6-9d1f-da144f43425a"/>
+</p>
+
+<h3 align="center">cryptnox-id-cli</h3>
+<p align="center">CLI for managing Cryptnox multi-applet ID smart cards</p>
+
+<br/>
+<br/>
 
 [![PyPI](https://img.shields.io/pypi/v/cryptnox-id-cli.svg)](https://pypi.org/project/cryptnox-id-cli/)
 [![Python versions](https://img.shields.io/pypi/pyversions/cryptnox-id-cli.svg)](https://pypi.org/project/cryptnox-id-cli/)
-[![docs](https://github.com/embarquech/cryptnox-id-cli/actions/workflows/docs.yml/badge.svg)](https://github.com/embarquech/cryptnox-id-cli/actions/workflows/docs.yml)
+[![docs](https://github.com/cryptnox/cryptnox-id-cli/actions/workflows/docs.yml/badge.svg)](https://github.com/cryptnox/cryptnox-id-cli/actions/workflows/docs.yml)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-Command-line management for the [Cryptnox ID](https://docs.cryptnox.com/cryptnox-id/)
-card family. One tool for all three card functions:
+`cryptnox-id-cli` is a command-line interface for managing the **Cryptnox ID**
+multi-applet smart card: **PIV** identity credentials, **FIDO2** passkeys, and
+**MIFARE DESFire** contactless applications — three independent functions on
+one physical card, driven by one tool.
 
-* **PIV** — SP 800-73 identity credentials (keys + X.509 certificates)
-* **FIDO2 / CTAP 2.1** — passkeys / WebAuthn
-* **MIFARE DESFire** — contactless applications (incl. EV3 Secure Dynamic Messaging)
+---
 
-Full documentation: **https://docs.cryptnox.com/cryptnox-id-cli/**
+## Supported hardware
 
-## Requirements
+### Cryptnox ID smart cards
 
-* Python 3.10+
-* A PC/SC stack: built into Windows and macOS; on Linux install `pcscd` +
-  `libccid`.
-* A PC/SC reader. MIFARE DESFire needs a DESFire-capable *contactless* reader.
+One card, four applets, reachable over two interfaces:
 
-## Install
+| Function | Interface | Notes |
+|----------|-----------|-------|
+| **PIV** (SP 800-73 keys + X.509 certificates) | Contact (admin), contact/contactless (use) | All personalization is contact-only |
+| **FIDO2 / CTAP 2.1** (passkeys / WebAuthn) | Contactless (NFC) | Windows requires an Administrator terminal |
+| **MIFARE DESFire** (incl. EV3 Secure Dynamic Messaging) | Contactless (NFC) | Needs a DESFire-capable reader |
+| **Genuineness** (factory attestation) | Contact | Read-only; proves the card is genuine Cryptnox hardware |
+
+### Smart card readers
+
+Works with Cryptnox readers and any other standard PC/SC smart card reader:
+
+| Reader | Type | Interface |
+|--------|------|-----------|
+| [Cryptnox® Smartcard Reader](https://shop.cryptnox.com/product/cryptnox-smartcard-reader/) | Contact (ID-1 + SIM) | USB-A |
+| [Compact USB Mini Smartcard Reader](https://shop.cryptnox.com/product/mini-smartcard-reader/) | Contact (ID-1) | USB-A |
+| [Cryptnox NFC Contactless Reader](https://shop.cryptnox.com/product/cryptnox-contactless-reader/) | Contactless (NFC/ISO 14443) | USB-C |
+
+Verified third-party readers: ACS ACR39U (contact), ACS ACR1252 (contactless,
+native DESFire OK). The HID OMNIKEY 5422CL does **not** support DESFire.
+
+> [!IMPORTANT]
+> MIFARE DESFire requires a contactless reader that passes *native* DESFire
+> commands — not all contactless readers do.
+
+---
+
+## Installation
+
+> [!IMPORTANT]
+> This is only a minimal setup. Additional packages may be required depending
+> on your operating system. See
+> [Installation](https://docs.cryptnox.com/cryptnox-id-cli/installation.html)
+> in the documentation.
+
+Requirements: Python 3.10+ and a PC/SC stack (built into Windows and macOS; on
+Linux install `pcscd` + `libccid`).
+
+### From PyPI
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .\.venv\Scripts\Activate.ps1
 pip install cryptnox-id-cli
-cryptnox-id --version
 ```
 
 Three interchangeable console commands are installed: `cryptnox-id`, the short
 `cnx-id`, and `cryptnox-id-card`.
 
-## First run
+### From source
+
+```bash
+git clone https://github.com/cryptnox/cryptnox-id-cli.git
+cd cryptnox-id-cli
+pip install .
+```
+
+---
+
+## Quick usage examples
+
+> [!TIP]
+> The examples below are only a subset of available commands. The complete list
+> of commands and detailed usage instructions is described in the
+> [official documentation](https://docs.cryptnox.com/cryptnox-id-cli/).
+
+### 1. Inspect the card
 
 ```bash
 cryptnox-id readers     # list readers, card presence, ATR
 cryptnox-id info        # detect the card + all functions on one screen
 cryptnox-id doctor      # PC/SC service, reader, per-function reachability
-cryptnox-id shell       # interactive prompt (run subcommands without the prefix)
 ```
 
-`info` and `doctor` are read-only and safe to run any time. From there, follow a
-quick start in the [documentation](https://docs.cryptnox.com/cryptnox-id-cli/):
-PIV, FIDO2, or MIFARE.
+`info` and `doctor` are read-only and safe to run any time.
 
-## Platform notes
+### 2. Provision a PIV credential
 
-* **FIDO2 on Windows** needs an Administrator terminal — Windows reserves the
-  CTAP interface for its WebAuthn API. Linux and macOS have no such restriction.
-* **PIV administration** is contact-only.
-* **MIFARE DESFire** requires a reader that passes native DESFire commands
-  (ACS ACR1252 verified).
+1. Run `cryptnox-id piv quickstart` on a contact reader.
+2. The card gets a key, a certificate, a CHUID and a CCC — usable by standard
+   PIV tooling (`yubico-piv-tool`, OpenSC, OS smart-card stacks).
+
+### 3. Create a passkey and prove the whole loop
+
+1. Run `cryptnox-id fido credential self-test` — registers a credential,
+   requests an assertion, and verifies the returned signature: the full
+   WebAuthn round trip against the real authenticator.
+2. For a resident, PIN-verified credential: `cryptnox-id fido pin set`, then
+   re-run the self-test with `--rk`. On Windows, run from an Administrator
+   terminal.
+
+### 4. Prove the card is genuine
+
+1. Run `cryptnox-id genuine verify` on a contact reader.
+2. The card signs a fresh nonce and the on-card certificate is chained to the
+   pinned Cryptnox root — the verdict is **GENUINE** only when both checks pass.
+
+### 5. Work interactively
+
+```bash
+cryptnox-id shell       # run subcommands without re-typing the prefix
+```
+
+---
+
+## Documentation
+
+The full **User & Developer documentation** is available at the
+[Cryptnox ID CLI Documentation](https://docs.cryptnox.com/cryptnox-id-cli/). It
+covers installation and setup, quick starts and usage guides for every card
+function (PIV, FIDO2, MIFARE DESFire, genuineness), the complete CLI command
+reference, JSON output and exit codes, and factory/provisioning notes.
+
+---
 
 ## Development
 
@@ -63,29 +147,20 @@ mypy
 pytest -q -m "not real_card"
 ```
 
-Unit tests use a mock transport — no reader or card required. Real-card tests are
-opt-in (`-m real_card`) and never run in CI.
+Unit tests use a mock transport — no reader or card required. Real-card tests
+are opt-in (`-m real_card`) and never run in CI.
 
-## Documentation
-
-The docs are built with Sphinx. Warnings are fatal (`-W`), matching CI.
-
-```bash
-pip install -r docs/requirements.txt
-```
-
-Build the HTML site (output in `docs/_build/html/`):
-
-```bash
-cd docs
-make html
-# open docs/_build/html/index.html
-```
-
-Push to `main` deploys the site to GitHub Pages.
+---
 
 ## License
 
-This project is available under the GNU **LGPL v3** (see [`LICENSE`](LICENSE)). A
-commercial license is also available — see [`COMMERCIAL.md`](COMMERCIAL.md). The
-documentation is licensed CC BY-NC-ND 4.0.
+`cryptnox-id-cli` is dual-licensed:
+
+- **LGPL-3.0** for open-source projects and proprietary projects that comply
+  with LGPL requirements (see [`LICENSE`](LICENSE))
+- **Commercial license** for projects that require a proprietary license
+  without LGPL obligations (see [`COMMERCIAL.md`](COMMERCIAL.md) for details)
+
+The documentation is licensed CC BY-NC-ND 4.0.
+
+For commercial inquiries, contact: contact@cryptnox.com

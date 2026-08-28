@@ -46,9 +46,9 @@ dependencies = [
 [project.urls]
 Homepage = "https://cryptnox.com/"
 Documentation = "https://docs.cryptnox.com/cryptnox-id-cli/"
-Repository = "https://github.com/embarquech/cryptnox-id-cli"
-Issues = "https://github.com/embarquech/cryptnox-id-cli/issues"
-Changelog = "https://github.com/embarquech/cryptnox-id-cli/blob/main/CHANGELOG.md"
+Repository = "https://github.com/cryptnox/cryptnox-id-cli"
+Issues = "https://github.com/cryptnox/cryptnox-id-cli/issues"
+Changelog = "https://github.com/cryptnox/cryptnox-id-cli/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 dev = [
